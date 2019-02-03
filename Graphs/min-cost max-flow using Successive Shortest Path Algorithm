@@ -1,0 +1,98 @@
+#include<iostream>
+#include<cstring>
+#include<vector>
+#include<queue>
+
+using namespace std;
+
+const int MAXN = 150;
+const int inf = 1e9 + 5;
+
+vector <int> graph[MAXN];
+int f[MAXN][MAXN], c[MAXN][MAXN];
+
+priority_queue < pair <int, int> > q;
+int dist[MAXN], last[MAXN];
+
+void addEdge(int u, int v, int flow, int cost)
+{
+    graph[u].push_back(v);
+    graph[v].push_back(u);
+
+    f[u][v] = flow;
+
+    c[u][v] = cost;
+    c[v][u] = cost;
+}
+
+int Dijkstra(int s, int t)
+{
+    for(int i = 0;i<MAXN;i++)
+    {
+        dist[i] = inf;
+    }
+    dist[s] = 0;
+
+    int u;
+    q.push({0, s});
+
+    while(q.empty()==false)
+    {
+        u = q.top().second;
+        q.pop();
+
+        for(int i = 0;i<graph[u].size();i++)
+        {
+            if(f[u][ graph[u][i] ]!=0 && dist[ graph[u][i] ] > dist[u] + c[u][ graph[u][i] ])
+            {
+                dist[ graph[u][i] ] = dist[u] + c[u][ graph[u][i] ];
+                last[ graph[u][i] ] = u;
+
+                q.push({-dist[ graph[u][i] ], graph[u][i]});
+            }
+        }
+    }
+
+    return dist[t];
+}
+
+pair <int, int> minCostMaxFlow(int s, int t)
+{
+    int maxFlow = 0, minCost = 0;
+
+    while(true)
+    {
+        int cost = Dijkstra(s, t);
+        if(cost==inf) break;
+
+        int u = t;
+        int flow = inf;
+
+        while(u!=s)
+        {
+            flow = min(flow, f[ last[u] ][u]);
+            u = last[u];
+        }
+
+        u = t;
+        while(u!=s)
+        {
+            f[ last[u] ][u] -= flow;
+            f[u][ last[u] ] += flow;
+
+            u = last[u];
+        }
+
+        maxFlow += flow;
+        minCost += cost*flow;
+    }
+
+    return {maxFlow, minCost};
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+}
