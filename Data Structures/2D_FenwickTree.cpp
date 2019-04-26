@@ -41,7 +41,7 @@ struct fenwick1D
 
     long long query(int l, int r)
     {
-        return getPrefix(r)+getPrefix(l-1);
+        return getPrefix(r) - getPrefix(l-1);
     }
 };
 
