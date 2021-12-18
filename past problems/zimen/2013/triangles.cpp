@@ -1,3 +1,5 @@
+//Separating Axis Theorem
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -6,7 +8,7 @@
 using namespace std;
 
 const double PI = acos(-1);
-const double eps = 0.000000001;
+const double eps = 0.00000001;
 
 double degToRad(double x)
 {
@@ -82,6 +84,17 @@ double calcArea(const Vector2& A, const Vector2& B, const Vector2& C)
     return ((A.x*B.y + A.y*C.x + B.x*C.y) - (A.y*B.x + A.x*C.y + B.y*C.x))*0.5;
 }
 
+struct Polygon
+{
+    vector <Vector2> v;
+
+    Polygon(){}
+    Polygon(vector <Vector2> v)
+    {
+        this->v = v;
+    }
+};
+
 bool operator <(Vector2 A, Vector2 B)
 {
     if(abs(A.x-B.x)>eps) return A.x+eps<B.x;
@@ -154,6 +167,20 @@ Vector2 project(const Line &l, const Vector2& P)
     return intersect(l, l1);
 }
 
+void readTriangle(Polygon &T)
+{
+    int x, y;
+
+    cin >> x >> y;
+    T.v.emplace_back(x,  y);
+
+    cin >> x >> y;
+    T.v.emplace_back(x,  y);
+
+    cin >> x >> y;
+    T.v.emplace_back(x,  y);
+}
+
 bool between(Vector2 A, Vector2 B, Vector2 X)
 {
     if(min(A.x, B.x)-eps<=X.x && X.x<=max(A.x, B.x)+eps
@@ -165,18 +192,7 @@ bool between(Vector2 A, Vector2 B, Vector2 X)
     return false;
 }
 
-struct Polygon
-{
-    vector <Vector2> v;
-
-    Polygon(){}
-    Polygon(const vector <Vector2> &v)
-    {
-        this->v = v;
-    }
-};
-
-bool detectCollision(const Polygon &p1, const Polygon &p2) //Separating Axis Theorem
+bool intersect(const Polygon &p1, const Polygon &p2)
 {
     const Polygon* p = &p1;
     for(int iter = 0;iter<2;iter++)
@@ -245,11 +261,15 @@ bool detectCollision(const Polygon &p1, const Polygon &p2) //Separating Axis The
     return true;
 }
 
-
 int main()
 {
-    Vector2 v(1, 0);
+    Polygon T, T1, T2, T3, T4;
 
-    v = v.rotated(degToRad(90));
-    cout << fixed << setprecision(5) << v.x << " " << v.y << '\n';
+    readTriangle(T);
+    readTriangle(T1);
+    readTriangle(T2);
+    readTriangle(T3);
+    readTriangle(T4);
+
+    cout << intersect(T, T1) << intersect(T, T2) << intersect(T, T3) << intersect(T, T4) << '\n';
 }
