@@ -1,6 +1,6 @@
-https://arena.olimpiici.com/#/catalog/199/problem/475
-https://arena.olimpiici.com/#/catalog/67/problem/143
-https://arena.olimpiici.com/#/catalog/320/problem/896
+https://arena.olimpiici.com/#/catalog/199/problem/475 //DONE
+https://arena.olimpiici.com/#/catalog/67/problem/143 //DONE
+https://arena.olimpiici.com/#/catalog/320/problem/896 //DONE
 https://arena.olimpiici.com/#/catalog/42/problem/80
 https://arena.olimpiici.com/#/catalog/42/problem/79 - направете решение с битови маски
 https://codeforces.com/problemset/problem/908/D
