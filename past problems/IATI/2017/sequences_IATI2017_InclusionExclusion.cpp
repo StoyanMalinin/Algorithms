@@ -19,8 +19,8 @@ void init()
 
 int sign(int x)
 {
-    if(x%2==0) return +1;
-    return -1;
+    if(x%2==0) return -1;
+    return +1;
 }
 
 int main()
@@ -34,11 +34,13 @@ int main()
     cin >> n >> m >> k;
 
     int64_t ans = comb[n+m-1][n];
+
+    int64_t badCnt = 0;
     for(int bad = 1;bad<=m;bad++)
     {
         if(bad*(k+1)>n) break;
-        ans += sign(bad)*comb[m][bad]*comb[(n-bad*(k+1))+m-1][n-bad*(k+1)];
+        badCnt += sign(bad)*comb[m][bad]*comb[(n-bad*(k+1))+m-1][n-bad*(k+1)];
     }
 
-    cout << ans << '\n';
+    cout << ans - badCnt << '\n';
 }
