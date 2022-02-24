@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int MAXN = 1005;
-const int MAXLog = 11;
+const int MAXN = 1e5;
+const int MAXLog = 20;
 
 int n;
 vector <int> graph[MAXN];
@@ -90,5 +90,5 @@ int main()
     int root;
     cin >> root;
 
-
+    init(root);
 }
