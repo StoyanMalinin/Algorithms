@@ -7,6 +7,7 @@
 \usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{caption}
+\usepackage{tabularx}
 
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
@@ -209,12 +210,204 @@ int main()
 Можем да проверим дали връх $u$ e предшественик на връх $v$, ако проверим дали $lca(u, v)$ е равно на $u$.
 
 \section*{Задачи за LCA}
-\subsection*{Открито първенство на София по информатика - В2 Пътища}
+\subsection*{Открито първенство на София по информатика 2020 - В2 Пътища}
 \paragraph*{}
-\href{https://arena.olimpiici.com/#/catalog/533/problem/1326}{Условие на задачата} 
+\href{https://arena.olimpiici.com/#/catalog/533/problem/1326}{Условие на задачата}
+\paragraph*{}
+\href{https://www.youtube.com/watch?v=C1oz4oq7YWc}{Анализ}
 
 \subsection*{Codeforces - Hill Climbing}
 \paragraph*{}
-\href{https://codeforces.com/problemset/problem/406/D}{Условие на задачата}
+\href{https://codeforces.com/problemset/problem/406/D}{Условие и анализ на задачата}
+
+\section*{LCA с Euler Tour}
+\paragraph*{}
+\href{https://cp-algorithms.com/graph/lca.html}{Tutorial от cp-algorithms}
+\subsection*{Euler Tour}
+\paragraph*{}
+Euler tour или Ойлерово обхождане е начин за обхождане на дърво базиран на DFS. Идеята е, че коренът на поддърво стои в началото и края на подмасива, който представлява поддървото, а също така и между всеки два подмасива, отговарящи за някое поддърво на поддървото. По-конкретно, примерна имплементация на алгоритъма е следната.
+
+\begin{lstlisting}
+void dfs(int x, int last, vector <int> &eulerTour)
+{
+    eulerTour.push_back(x);
+    for(int y: adj[x])
+    {
+        if(y!=last)
+        {
+            dfs(y, x, eulerTour);
+            eulerTour.push_back(x);
+        }
+    }
+}
+\end{lstlisting}
+
+\begin{figure}[h]
+\caption*{Фигура 2}
+\centering
+\includegraphics[width=0.5\textwidth]{tree2}
+\end{figure}
+
+\paragraph*{}
+Ето как би изглеждало едно примерно Ойлерово обхождане на дървото от Фигура 2. Тук сме показали и дълбочината на върха, понеже тя ще е важна по-късно.
+\paragraph*{}
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| } 
+\hline
+ind & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\
+\hline
+vertex & 1 & 2 & 4 & 2 & 5 & 7 & 5 & 8 & 5 & 2 & 1 & 3 & 6 & 9 & 6 & 3 & 1 \\ 
+\hline
+depth & 0 & 1 & 2 & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 0 & 1 & 2 & 3 & 2 & 1 & 0 \\
+\hline
+\end{tabular}
+
+\paragraph*{}
+Оказва се, че ако искаме да намерим lca на два върха $u$ и $v$ трябва да намерим върха, който е с най-малка дълбочина и се намира между първите срещания на тези върхове. Първото срещане на връх $u$  e индексът, на който връх $u$ се среща за пръв път в ойлеровото обхождане. Можете да се убедите с примери. Грубо идеята е, че $lca$ е най-високият връх на пътя между два връха, а този интервал, който се получава че разглеждаме съдържа път, който може да не е прост, но е не се "изкачва" прекалено много. Откриването на този връх може да стане по много начини - с коренова декомпозиция, сегментно дърво и т.н., но ние ще се спрем на имплементацията със sprase table, понеже най-често тази комбинация се оказва полезна.
+
+\section*{Sparse table}
+\paragraph*{}
+\href{https://cp-algorithms.com/data_structures/sparse-table.html}{Tutorial от cp-algorithms}
+\paragraph*{}
+Подобно на кореновата декомпозиция и сегментните дървета, sprase table-а също пази определена информация от търсения вид за разни интервали от нашия масив. По-конкретно, нека приемем, че ще търсим минимум в интервал. Нека имаме масив $a[]$ с размер $n$. Тогава sparse table-a $sparse[j][i]$ ще пази минимума за интервала $[i, i+2^j-1]$. Разбира се няма нужда да използваме стойности за $j$ по-големи от $log_2(n)$. Също така, ако се окаже, че $i+2^j-1 \geq n$ (тоест излиза от масива), тогава $sparse[j][i]$ ще пази минимум само за елементите до края на масива (един вид си представяме, че след края има безброй неутрални елементи спрямо операцията, която извършваме, в случая на $min$ този елемент е $+\infty$). Забелязваме също, че можем лесно да пресмятаме стойностите на $sparse[i][j]$. В общия случай, когато не излизаме от масива $sparse[j][i] = min(sparse[j-1][i], sparse[j-1][i+2^{j-1}])$. Така можем да пресметнем всички нужни ни стойности. Ето една примерна имплементация. 
+\begin{lstlisting}
+for(int i = 0;i<n;i++) sparse[0][i] = a[i];
+for(int l = 1;l<=MAXLog;l++)
+{
+	for(int i = 0;i<n;i++)
+	{
+		if(i+(1<<(l-1)) >= n)
+			sparse[l][i] = sparse[l-1][i];
+		else
+			sparse[l][i] = min(sparse[l-1][i], 
+			                     sparse[l-1][i+(1<<(l-1))]);
+	}
+}
+\end{lstlisting}
+
+\paragraph*{}
+Другият въпрос, който остава е как да правим query в тази структура. Обръщаме внимание, че sparse table работи само при оператори, които са идемпотентни, тоест добавянето на елемент по няколко пъти към "сметката" не я променя. По-конкретно, всички знаем, че $min(a, b) = min(a, b, a)$. Тоест като добавим елемент няколко пъти, стойността се запазва. Това важи за функции като $lca$, $gcd$(НОД), $lcm$(НОК), $max$ и други. Обръщаме внимание, че не важи за сума, тоест $sum(a, b) \neq sum(a, b, a)$ в общия случай.
+\paragraph*{}
+Връщайки се към конкретната задача: как да намираме $min$ за числата в интервала $[l, r]$ бързо. Забелязваме, че интервала може да се покрие от два интервала, които имат размер точна степен на двойката, по-конкретно $sz = 2^{[log_2(r-l+1)]}$, нека отбележим цялата част на двоичния логаритъм със $L = [log_2(r-l+1)]$. Така минимумът за един интервал е точно $min(sparse[L][l], sparse[L][r-2^L+1])$. Обърнете внимание, че тези два интервала могат да се пресичат. Това е и причината да изискваме идемпотентност.   
+\paragraph*{}
+Цялата на част на двоичния логаритъм можем предварително да precompute-нем по такъв начин.
+
+\begin{lstlisting}
+log2[1] = 0;
+for(int x = 2;x<=MAXN;x++)
+    log2[x] = log2[x/2] + 1;
+\end{lstlisting}
+
+\paragraph*{}
+Ето и една примерна реализация за RMQ (range minimum query).
+\begin{lstlisting}
+int rmq(int l, int r) //range minimum query
+{
+    return min(sparse[log2[r-l+1]][l], 
+                sparse[log2[r-l+1]][r - (1<<log2[r-l+1]) + 1]);
+}
+\end{lstlisting}
+
+\subsection*{Цялостен алгоритъм}
+\paragraph*{}
+След като вече знаем алгоритъмът с Ойлерово обхождане и можем да боравим със sparse table остава само да направим имплементация. С тези инструменти ние можем да решаваме задачата за lca за $O(N logN)$ precompute и $O(Q)$ за отговаряне на всичките $Q$ заявки.
+\paragraph*{}
+Тъй като тук ние трябва да връщаме чрез sprase table-а не самата минмална стойност на дълбочина, а  върхът, който я "притежава", то можем да постъпим по няколко начина. Единият е да пазим в структура двете информации - връх и дълбочина, и да напишем функция $min$ за тази структура (може и със std::pair без да се занимаваме със специални min функции. Друг вариант е да напишем специална функция, която при вход от два връха $u$ и $v$ да връха този, който има по-малка дълбочина. Това ще бъде и стратегията за тази имплементация. Малка имплементационна подробност е, че размера на ойлеровото обхождане може да бъде двоен на размера на дървото, затова трябва масивите да бъдат по-големи.
+\paragraph*{}
+Можете да тествате имплементацията си тук: \href{https://judge.yosupo.jp/problem/lca}{Library Checker - Lowest Common Ancestor}
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int MAXN = 5e5;
+const int MAXLog = 20;
+
+int n;
+vector <int> adj[MAXN+5];
+
+int depth[MAXN+5], firstSeen[MAXN+5];
+int sparse[MAXLog+2][MAXN*2+5], log2[MAXN*2+5];
+
+void dfs(int x, int last, int level, vector <int> &eulerTour)
+{
+    depth[x] = level;
+    firstSeen[x] = eulerTour.size();
+
+    eulerTour.push_back(x);
+    for(int y: adj[x])
+    {
+        if(y!=last)
+        {
+            dfs(y, x, level+1, eulerTour);
+            eulerTour.push_back(x);
+        }
+    }
+}
+
+int getShallowerVertex(int u, int v)
+{
+    if(depth[u]<depth[v]) return u;
+    return v;
+}
+
+void init(int root)
+{
+    vector <int> eulerTour;
+    dfs(root, -1, 0, eulerTour);
+
+    log2[1] = 0;
+    for(int x = 2;x<=2*MAXN;x++)
+        log2[x] = log2[x/2] + 1;
+
+    for(int i = 0;i<eulerTour.size();i++) sparse[0][i] = eulerTour[i];
+    for(int l = 1;l<=MAXLog;l++)
+    {
+        for(int i = 0;i<eulerTour.size();i++)
+        {
+            if(i+(1<<(l-1)) >= eulerTour.size())
+                sparse[l][i] = sparse[l-1][i];
+            else
+                sparse[l][i] = getShallowerVertex(sparse[l-1][i], sparse[l-1][i+(1<<(l-1))]);
+        }
+    }
+}
+
+int rmq(int l, int r) //range minimum query
+{
+    return getShallowerVertex(sparse[log2[r-l+1]][l], sparse[log2[r-l+1]][r - (1<<log2[r-l+1]) + 1]);
+}
+
+int lca(int u, int v)
+{
+    if(firstSeen[u]>firstSeen[v]) swap(u, v);
+    return rmq(firstSeen[u], firstSeen[v]);
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int Q;
+    cin >> n >> Q;
+    for(int i = 1;i<n;i++)
+    {
+        int p;
+        cin >> p;
+
+        adj[p].push_back(i);
+    }
+
+    init(0);
+    while(Q--)
+    {
+        int u, v;
+        cin >> u >> v;
+
+        cout << lca(u, v) << '\n';
+    }
+}
+\end{lstlisting}
 
 \end{document}

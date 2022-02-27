@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.11.11)  23 FEB 2022 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.11.11)  27 FEB 2022 18:56
 entering extended mode
 **"./LCA and Sparse Table.tex"
 (LCA and Sparse Table.tex
@@ -530,9 +530,30 @@ Package caption Info: Standard document class detected.
 \c@caption@flags=\count285
 \c@continuedfloat=\count286
 Package caption Info: hyperref package is loaded.
-) (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
-y
+) (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+
+(C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
+\col@sep=\dimen170
+\ar@mcellbox=\box52
+\extrarowheight=\dimen171
+\NC@list=\toks32
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box53
+)
+\TX@col@width=\dimen172
+\TX@old@table=\dimen173
+\TX@old@col=\dimen174
+\TX@target=\dimen175
+\TX@delta=\dimen176
+\TX@cols=\count287
+\TX@ftn=\toks33
+)
+(C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
@@ -549,28 +570,28 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 f
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen170
-\Gin@req@width=\dimen171
+\Gin@req@height=\dimen177
+\Gin@req@width=\dimen178
 )
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count287
-\lst@gtempboxa=\box52
-\lst@token=\toks32
-\lst@length=\count288
-\lst@currlwidth=\dimen172
-\lst@column=\count289
-\lst@pos=\count290
-\lst@lostspace=\dimen173
-\lst@width=\dimen174
-\lst@newlines=\count291
-\lst@lineno=\count292
-\lst@maxwidth=\dimen175
+\lst@mode=\count288
+\lst@gtempboxa=\box54
+\lst@token=\toks34
+\lst@length=\count289
+\lst@currlwidth=\dimen179
+\lst@column=\count290
+\lst@pos=\count291
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count292
+\lst@lineno=\count293
+\lst@maxwidth=\dimen182
 
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count293
-\lst@skipnumbers=\count294
-\lst@framebox=\box53
+\c@lstnumber=\count294
+\lst@skipnumbers=\count295
+\lst@framebox=\box55
 )
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -595,8 +616,8 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pd
 ftex.def
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count295
-\l__pdf_internal_box=\box54
+\l__color_backend_stack_int=\count296
+\l__pdf_internal_box=\box56
 ) (LCA and Sparse Table.aux
 LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 2
 2.
@@ -606,28 +627,28 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 \openout1 = `"LCA and Sparse Table.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Info: Redefining \th on input line 39.
-Package hyperref Info: Link coloring OFF on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Info: Redefining \th on input line 40.
+Package hyperref Info: Link coloring OFF on input line 40.
 
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -639,11 +660,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 tlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count296
+\c@section@level=\count297
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
-LaTeX Info: Redefining \nameref on input line 39.
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+LaTeX Info: Redefining \nameref on input line 40.
  (LCA and Sparse Table.out) (LCA and Sparse Table.out)
 \@outlinefile=\write3
 \openout3 = `"LCA and Sparse Table.out"'.
@@ -655,17 +676,17 @@ Package caption Info: End \AtBeginDocument code.
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.m
 kii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count297
-\scratchdimen=\dimen176
-\scratchbox=\box55
-\nofMPsegments=\count298
-\nofMParguments=\count299
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count300
-\MPscratchDim=\dimen177
-\MPnumerator=\count301
-\makeMPintoPDFobject=\count302
-\everyMPtoPDFconversion=\toks34
+\scratchcounter=\count298
+\scratchdimen=\dimen183
+\scratchbox=\box57
+\nofMPsegments=\count299
+\nofMParguments=\count300
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count301
+\MPscratchDim=\dimen184
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
+\everyMPtoPDFconversion=\toks36
 )
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-
 base.sty
@@ -677,13 +698,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count303
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+\c@lstlisting=\count304
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
 
  (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
 
  (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -691,34 +712,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
-<./images//tree1.png, id=3, 534.99875pt x 395.4775pt>
+<./images//tree1.png, id=3, 350.181pt x 258.858pt>
 File: ./images//tree1.png Graphic file (type png)
 <use ./images//tree1.png>
-Package pdftex.def Info: ./images//tree1.png  used on input line 55.
-(pdftex.def)             Requested size: 195.0pt x 144.14592pt.
+Package pdftex.def Info: ./images//tree1.png  used on input line 56.
+(pdftex.def)             Requested size: 195.0pt x 144.14581pt.
 [1
 
 
 Non-PDF special ignored!
 <special> header=tree-dvips91.pro
 {C:/Users/Stoyan/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./images//tree
-1.png (PNG copy)>] [2] [3] [4]
+1.png>] [2] [3] [4]
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
-105.
+106.
 
 (C:\Users\Stoyan\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-[5] [6] [7] [8] (LCA and Sparse Table.aux)
+[5] [6] [7]
+<./images//tree2.png, id=170, 429.605pt x 358.33875pt>
+File: ./images//tree2.png Graphic file (type png)
+<use ./images//tree2.png>
+Package pdftex.def Info: ./images//tree2.png  used on input line 248.
+(pdftex.def)             Requested size: 195.0pt x 162.6507pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8]
+Overfull \hbox (6.21773pt too wide) in paragraph at lines 254--263
+[]  
+ []
+
+[9 <./images//tree2.png>] [10] [11] [12] [13] [14] (LCA and Sparse Table.aux)
 Package rerunfilecheck Info: File `"LCA and Sparse Table".out' has not changed.
 
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14276 strings out of 478927
- 212298 string characters out of 2852060
- 741155 words of memory out of 3000000
- 31811 multiletter control sequences out of 15000+600000
+ 14584 strings out of 478927
+ 216507 string characters out of 2852060
+ 753121 words of memory out of 3000000
+ 31957 multiletter control sequences out of 15000+600000
  417808 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,66p,2495b,1986s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -733,13 +769,14 @@ pk/ljfour/lh/lh-t2a/dpi600\larm2074.pk><C:/Users/Stoyan/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Stoyan/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Stoyan/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/St
-oyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/
-Users/Stoyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Users/Stoyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb>
-Output written on "LCA and Sparse Table.pdf" (8 pages, 199965 bytes).
+oyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/
+Users/Stoyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><C:/Users/Stoyan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Users/Stoyan/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb>
+Output written on "LCA and Sparse Table.pdf" (14 pages, 277327 bytes).
 PDF statistics:
- 495 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 760 PDF objects out of 1000 (max. 8388607)
+ 287 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
