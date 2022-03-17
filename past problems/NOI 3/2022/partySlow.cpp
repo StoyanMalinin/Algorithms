@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 using namespace std;
 
@@ -28,11 +29,15 @@ int main()
         graph[y].push_back(x);
     }
 
+    double startTime = clock();
+
     int ans = 0;
     for(int x = 1;x<=n;x++) ans += isInvited[0][x];
 
     for(int iter = 1;iter<2*n;iter++)
     {
+        if((clock()-startTime)/CLOCKS_PER_SEC > 0.5) break;
+
         for(int x = 1;x<=n;x++)
         {
             bool found = false;
@@ -51,9 +56,6 @@ int main()
         int curr = 0;
         for(int x = 1;x<=n;x++) curr += isInvited[iter&1][x];
         ans = max(ans, curr);
-
-        for(int x = 1;x<=n;x++) cout << isInvited[iter&1][x];
-        cout << '\n';
     }
 
     cout << ans << '\n';
