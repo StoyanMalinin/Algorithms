@@ -67,7 +67,8 @@ int main()
     {
         ans += (lastH-*hIt)*segmentCoverVal;
 
-        for(pair <int, int> item: height2Segments[*hIt])
+        list <pair <int, int>> &l = height2Segments[*hIt];
+        for(pair <int, int> item: l)
         {
             auto it = prev(segments.upper_bound({item.first, inf}));
 
