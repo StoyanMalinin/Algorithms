@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{tabularx}
+
+\begin{document}
+
+\paragraph*{}
+Текущият анализ е по-подробно обяснение на сложността на авторските решения, предложени за задача sequences на контролното С група през 2022 година.
+
+\section*{Част 1}
+\paragraph*{}
+Трябва да покажем, че сред числата $[\frac{n}{1}], [\frac{n}{2}], ..., [\frac{n}{n}]$ са не повече от $2 \sqrt{n}$. Ще покажем това като покажем, че всяко число от вида $[\frac{n}{x}]$ се съдържа в множеството $N_1 = \{1, 2, ..., [\sqrt{n}] \}$ или $N_2 = \{ [\frac{n}{1}], [\frac{n}{2}], ..., [\frac{n}{\sqrt{n}}] \}$.
+
+\subsection*{Случай 1: $x \geq \sqrt{n}$}
+\paragraph*{}
+Това е лесно. Ясно е, че $\frac{n}{x} \leq \frac{n}{\sqrt{n}} = \sqrt{n}$. Тоест е ясно, че $[\frac{n}{x}] \in N_1$
+
+\subsection*{Случай 2: $x < \sqrt{n}$}
+В този случай $\frac{n}{x} > \sqrt{n}$. В този случай $[\frac{n}{x}] \in N_2$ буквално по дефиниция.
+
+\paragraph*{}
+Като интуиция за това доказателство можем да ползваме, че всъщност деленето реално е нещо като симетрия спрямо корен квадратен от числителя. И всички начини да разменим $n$ на по-малко положително цяло число могат да се разделят на два случая - когато числителят е малък(малко на брой случаи) или когато числителят е голям(много случаи, но резултатът от деленето е малко число).
+
+\section*{Част 2}
+\paragraph*{}
+Трябва да покажем, че числата от вида $[\frac{x}{i}]$, където $x \in N_1 \cup N_2$ и $1 \leq i \leq x$, са около $n^{\frac{3}{4}}$. 
+Отново ще цепим на два случая.
+
+\subsection*{Случай 1: $x \in N_1$}
+\paragraph*{}
+Тук директно можем да ползваме Част 1. Знаем, че $x \leq \sqrt{n}$. Знаем, че има най много $2 \sqrt{x} \leq 2 \sqrt{\sqrt{n}}$ числа от вида $[\frac{x}{i}]$, тоест по най-грубата сметка излиза, че от този случай имаме най-много $|N_1| \cdot 2 \sqrt{\sqrt{n}} = 2 n^{\frac{3}{4}}$ числа.
+
+\subsection*{Случай 2: $x \in N_2$}  
+Тук работата е малко по пипкава. Пак ще преизползваме старата задача, но ще трябва малко по-внимателно да си направим анализа на сложността. От старото решение можем да заключим, че имаме от този случай най-много $\displaystyle\sum_{x \in N_2} 2 \sqrt{x}$. Това обаче не ни казва много за жалост. Нека го разпишем малко по-подробно. 
+
+\begin{equation*}
+    \displaystyle\sum_{x \in N_2} 2 \sqrt{x} = 2\displaystyle\sum_{j=1}^{[\sqrt{n}]} \sqrt{\frac{n}{i}} \leq 2 \displaystyle\sum_{j=1}^{[\sqrt{n}]} \frac{\sqrt{n}}{i} = 2 \sqrt{n} \displaystyle\sum_{j=1}^{[\sqrt{n}]} \frac{1}{i} \approx 2\sqrt{n} \cdot \ln(\sqrt{n}).
+\end{equation*}
+
+Тук използвахме наготово, че $\frac{1}{1} + \frac{1}{2} + ... + \frac{1}{m} \approx \ln(m)$.
+
+\subsection*{Довършване}
+\paragraph*{}
+Оконачтелно от двата случая имаме, че има горе-долу не повече от $2 n^{\frac{3}{4}} + 2\sqrt{n} \cdot \ln(\sqrt{n})$, което е $O(n^{\frac{3}{4}})$. Това трябваше и да се покаже.
+
+\end{document}
