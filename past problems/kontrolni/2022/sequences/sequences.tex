@@ -41,13 +41,13 @@
 Тук работата е малко по пипкава. Пак ще преизползваме старата задача, но ще трябва малко по-внимателно да си направим анализа на сложността. От старото решение можем да заключим, че имаме от този случай най-много $\displaystyle\sum_{x \in N_2} 2 \sqrt{x}$. Това обаче не ни казва много за жалост. Нека го разпишем малко по-подробно. 
 
 \begin{equation*}
-    \displaystyle\sum_{x \in N_2} 2 \sqrt{x} = 2\displaystyle\sum_{j=1}^{[\sqrt{n}]} \sqrt{\frac{n}{i}} \leq 2 \displaystyle\sum_{j=1}^{[\sqrt{n}]} \frac{\sqrt{n}}{i} = 2 \sqrt{n} \displaystyle\sum_{j=1}^{[\sqrt{n}]} \frac{1}{i} \approx 2\sqrt{n} \cdot \ln(\sqrt{n}).
+    \displaystyle\sum_{x \in N_2} 2 \sqrt{x} = 2\displaystyle\sum_{j=1}^{[\sqrt{n}]} \sqrt{\frac{n}{j}} = 2 \sqrt{n} \displaystyle\sum_{j=1}^{[\sqrt{n}]} \frac{1}{\sqrt{j}} < 2 \sqrt{n} \cdot (2 \sqrt{\sqrt{n}+1} - 1) \approx 4 n^{\frac{3}{4}}
 \end{equation*}
 
-Тук използвахме наготово, че $\frac{1}{1} + \frac{1}{2} + ... + \frac{1}{m} \approx \ln(m)$.
+Тук използвахме наготово, че $\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + ... + \frac{1}{\sqrt{m}} \approx 2\sqrt{m+1} - 1$.
 
 \subsection*{Довършване}
 \paragraph*{}
-Оконачтелно от двата случая имаме, че има горе-долу не повече от $2 n^{\frac{3}{4}} + 2\sqrt{n} \cdot \ln(\sqrt{n})$, което е $O(n^{\frac{3}{4}})$. Това трябваше и да се покаже.
+Оконачтелно от двата случая имаме, че има горе-долу не повече от $2 n^{\frac{3}{4}} + 4 n^{\frac{3}{4}}$, което е $O(n^{\frac{3}{4}})$. Това трябваше и да се покаже.
 
 \end{document}
