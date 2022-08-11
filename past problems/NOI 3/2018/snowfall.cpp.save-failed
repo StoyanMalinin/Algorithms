@@ -1,0 +1,114 @@
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
+
+const int MAXN = 5e4;
+const int MAXM = 2e5;
+
+struct Edge
+{
+    int u, v;
+    int snow;
+
+    Edge(){}
+    Edge(int u, int v, int snow) : u(u), v(v), snow(snow) {}
+};
+
+bool operator <(const Edge &A, const Edge &B)
+{
+    if(A.snow!=B.snow) return A.snow<B.snow;
+    if(A.u!=B.u) return A.u<B.u;
+    return A.v<B.v;
+}
+
+int n, m, k;
+Edge edges[MAXM+5];
+
+int depth[MAXN+5], minDepth[MAXN+5];
+bool used[MAXN+5];
+
+vector <int> APs;
+vector <pair <int, int>> graph[MAXN+5];
+
+void dfs(int x, int last, int level, const int SNOWFALL)
+{
+    used[x] = true;
+    depth[x] = level;
+    minDepth[x] = MAXN;
+
+    bool isAP = true;
+    int children = 0;
+
+    for(pair <int, int> e: graph[x])
+    {
+        int y = e.first;
+        int snowLimit = e.second;
+        if(snowLimit<=SNOWFALL) continue;
+
+        if(used[y]==false)
+        {
+            dfs(y, x, level+1, SNOWFALL);
+
+            children++;
+            minDepth[x] = min(minDepth[x], minDepth[y]);
+
+            if(minDepth[y]>=depth[x]) isAP = false;
+        }
+        else
+        {
+            if(x!=last)
+            {
+                if(depth[y]<depth[x])
+                    minDepth[x] = min(minDepth[x], depth[y]);
+            }
+        }
+    }
+
+    if(last==-1)
+    {
+        if(children>=2) APs.push_back(x);
+    }
+    else
+    {
+        if(isAP==true) APs.push_back(x);
+    }
+}
+
+/*
+-1 -> too low
++1 -> too high
+0 -> just right
+*/
+int check(int snowfall)
+{
+
+}
+
+int main()
+{
+    cin >> n >> m >> k;
+    for(int i = 0;i<m;i++)
+    {
+        cin >> edges[i].u >> edges[i].v >> edges[i].snow;
+
+        graph[edges[i].u].emplace_back(edges[i].v, edges[i].snow);
+        graph[edges[i].v].emplace_back(edges[i].u, edges[i].snow);
+    }
+    sort(edges, edges+m);
+
+    dfs(1, -1, 0, 8);
+    cout << APs.size() << '\n';
+    for(int x: APs) cout << x << " ";
+    cout << '\n';
+
+    /*
+    int l = 0, r = m - 1, mid;
+    while(l+1<r)
+    {
+
+    }
+    */
+
+
+}
