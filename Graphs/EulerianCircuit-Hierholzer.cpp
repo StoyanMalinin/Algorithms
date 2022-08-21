@@ -86,8 +86,6 @@ vector <int> getEulerianCircuit()
     return res;
 }
 
-bool removed[MAXN+5][MAXN+5];
-
 int main()
 {
     cin >> n >> m;
