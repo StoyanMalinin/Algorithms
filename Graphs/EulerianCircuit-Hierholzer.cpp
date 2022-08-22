@@ -8,15 +8,6 @@ using namespace std;
 
 const int MAXN = 1024;
 
-struct Edge
-{
-    int u, v;
-    bool isAdditional;
-
-    Edge(){}
-    Edge(int u, int v, bool isAdditional) : u(u), v(v), isAdditional(isAdditional) {}
-};
-
 struct Adjacent
 {
     int y;
