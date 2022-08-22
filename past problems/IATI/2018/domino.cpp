@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <random>
 #include <stack>
 #include <set>
 
@@ -28,6 +29,7 @@ struct Adjacent
 };
 
 int n, m;
+bool seenDotCount[MAXN+5];
 vector <Adjacent> graph[MAXN+5];
 
 bool used[MAXN+5];
@@ -61,7 +63,17 @@ vector <Edge> getEulerianCircuit()
     stack <pair<int, Edge>> currPath;
     vector <Edge> res;
 
-    currPath.emplace(0, Edge(-1, -1, false));
+    int start = -1;
+    for(int x = 0;x<=n;x++)
+    {
+        if(seenDotCount[x]==true)
+        {
+            start = x;
+            break;
+        }
+    }
+
+    currPath.emplace(start, Edge(-1, -1, false));
     while(currPath.empty()==false)
     {
         int x = currPath.top().first;
@@ -94,8 +106,6 @@ bool removed[MAXN+5][MAXN+5];
 
 int main()
 {
-    set <int> seenDotCount;
-
     cin >> n >> m;
     for(int i = 0;i<m;i++)
     {
@@ -112,19 +122,17 @@ int main()
         {
             if(removed[u][v]==false)
             {
-                seenDotCount.insert(u);
-                seenDotCount.insert(v);
+                seenDotCount[u] = true;
+                seenDotCount[v] = true;
                 addEdge(u,v, false);
             }
         }
     }
 
-    vector <pair <int, int>> ans;
-
     vector <pair <int, int>> components;
     for(int x = 0;x<=n;x++)
     {
-        if(used[x]==false)
+        if(used[x]==false && seenDotCount[x]==true)
         {
             vector <int> oddNodes;
             dfs(x, oddNodes);
@@ -175,8 +183,11 @@ int main()
     cout << chains.size() << '\n';
     for(const auto& chain: chains)
     {
-        cout << chain[0].u << " ";
-        for(const Edge& e: chain) cout << e.v << " ";
-        cout << "-1" << '\n';
+        if(chain.empty()==false)
+        {
+             cout << chain[0].u << " ";
+            for(const Edge& e: chain) cout << e.v << " ";
+            cout << "-1" << '\n';
+        }
     }
 }

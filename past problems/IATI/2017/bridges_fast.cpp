@@ -10,15 +10,18 @@ vector <int> graph[MAXN+5];
 
 bool used[MAXN+5];
 
-void dfs(int x, vector <int> &oddNodes)
+int dfs(int x, vector <int> &oddNodes)
 {
     used[x] = true;
     if(graph[x].size()%2!=0) oddNodes.push_back(x);
 
+    int sz = 1;
     for(int y: graph[x])
     {
-        if(used[y]==false) dfs(y, oddNodes);
+        if(used[y]==false) sz += dfs(y, oddNodes);
     }
+
+    return sz;
 }
 
 int main()

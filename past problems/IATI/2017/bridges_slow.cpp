@@ -76,13 +76,15 @@ struct Multigraph
     {
         for(int x = 1;x<=n;x++)
         {
-            if(deg(x)%2==0) continue;
-            for(int y = x+1;y<=n;y++)
+            if(deg(x)%2!=0)
             {
-                if(deg(y)%2!=0 && dsu.areConnected(x, y)==false)
+                for(int y = x+1;y<=n;y++)
                 {
-                    addEdge(x, y, true);
-                    break;
+                    if(deg(y)%2!=0 && dsu.areConnected(x, y)==false)
+                    {
+                        addEdge(x, y, true);
+                        break;
+                    }
                 }
             }
         }
@@ -92,15 +94,17 @@ struct Multigraph
             bool update = false;
             for(int x = 1;x<=n;x++)
             {
-                if(deg(x)%2==0) continue;
-                for(int y = 1;y<=n;y++)
+                if(deg(x)%2!=0)
                 {
-                    if(dsu.areConnected(x, y)==false)
+                    for(int y = 1;y<=n;y++)
                     {
-                        addEdge(x, y, true);
+                        if(dsu.areConnected(x, y)==false)
+                        {
+                            addEdge(x, y, true);
 
-                        update = true;
-                        break;
+                            update = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -110,13 +114,15 @@ struct Multigraph
 
         for(int x = 1;x<=n;x++)
         {
-            if(deg(x)%2==0) continue;
-            for(int y = x+1;y<=n;y++)
+            if(deg(x)%2!=0)
             {
-                if(deg(y)%2!=0)
+                for(int y = x+1;y<=n;y++)
                 {
-                    addEdge(x, y, true);
-                    break;
+                    if(deg(y)%2!=0)
+                    {
+                        addEdge(x, y, true);
+                        break;
+                    }
                 }
             }
         }
@@ -175,7 +181,4 @@ int main()
     G.makeEulerian();
     cout << G.getAdditionalEdgesCount() << '\n';
     G.printAdditionalEdges();
-
-    for(int x = 1;x<=n;x++)
-        if(G.deg(x)%2!=0) cout << "FAK" << '\n';
 }
