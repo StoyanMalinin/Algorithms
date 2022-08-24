@@ -82,16 +82,6 @@ struct DirectedGraph
         v.push_back(x);
     }
 
-    void print()
-    {
-        for(int x = 0;x<n;x++)
-        {
-            cout << x << ":";
-            for(int y: graph[x]) cout << " " << y;
-            cout << '\n';
-        }
-    }
-
     pair<DirectedGraph*, vector <int>*> compress()
     {
         stack <int> st;
@@ -149,20 +139,6 @@ struct DirectedGraph
             for(int y: graphInv[x])
                 updateRange(dp[x], dp[y]);
         }
-    }
-
-    int countSources()
-    {
-        vector <bool> inDeg(n, false);
-        for(int x = 0;x<n;x++)
-            for(int y: graph[x])
-                inDeg[y] = true;
-
-        int cnt = 0;
-        for(int x = 0;x<n;x++)
-            cnt += (inDeg[x]==false);
-
-        return cnt;
     }
 };
 
@@ -278,7 +254,8 @@ int findMinimalCoverage(DirectedGraph *G, const vector <pair <int, int>> &v)
     set <int> waiting;
     map <int, vector<int>> start2Ends;
 
-    for(const auto& item: v) start2Ends[item.first].push_back(item.second);
+    for(const auto& item: v)
+        start2Ends[item.first].push_back(item.second);
 
     int ans = 0;
     for(int x = 0;x<grid.m;x++)
@@ -333,8 +310,9 @@ int main()
     DirectedGraph *gridGraph = readAndInit();
 
     auto res = gridGraph->compress();
-    vector <int> mp = *res.second;
+    vector <int> mp = std::move(*res.second);
     DirectedGraph *G = res.first;
+    delete res.second;
 
     initDp(G, mp);
     G->evalDp();
