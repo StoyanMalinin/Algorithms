@@ -51,7 +51,7 @@ struct LiChaoTree
         }
     }
 
-    int64_t query(int64_t x)
+    int64_t query(int64_t x) const
     {
         if(x<=(l+r)/2)
         {

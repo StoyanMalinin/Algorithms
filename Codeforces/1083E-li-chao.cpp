@@ -6,7 +6,7 @@ using namespace std;
 
 const int MAXN = 1e6 + 5;
 const int64_t inf = 1e18;
-const int64_t MAXX = 1e9;
+const int64_t MAXX = 1e9 + 5;
 
 struct Rectangle
 {
@@ -39,7 +39,7 @@ struct LiChaoTree
     LiChaoTree(int64_t l, int64_t r) : line(0, -inf), l(l), r(r), L(nullptr), R(nullptr) {}
     LiChaoTree(int64_t l, int64_t r, const Line& line) : line(line), l(l), r(r), L(nullptr), R(nullptr) {}
 
-    void update(const Line &newLine)
+    void update(Line newLine)
     {
         int64_t mid = (l+r)/2;
 
@@ -48,22 +48,21 @@ struct LiChaoTree
 
         Line lower = line;
         Line upper = newLine;
-        if(stateMid==true)
-        {
-            lower = newLine;
-            upper = line;
-        }
+        if(stateMid==true) swap(lower, upper);
 
         line = upper;
-        if(stateL!=stateMid)
+        if(l!=r)
         {
-            if(L==nullptr) L = new LiChaoTree(l, mid, lower);
-            else L->update(lower);
-        }
-        else
-        {
-            if(R==nullptr) R = new LiChaoTree(mid+1, r, lower);
-            else R->update(lower);
+            if(stateL!=stateMid)
+            {
+                if(L==nullptr) L = new LiChaoTree(l, mid, lower);
+                else L->update(lower);
+            }
+            else
+            {
+                if(R==nullptr) R = new LiChaoTree(mid+1, r, lower);
+                else R->update(lower);
+            }
         }
     }
 
