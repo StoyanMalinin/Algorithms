@@ -83,7 +83,7 @@ struct SegmentTreeNode
     {
         if (ind == l && l == r)
         {
-            s.cnt[piece.first][piece.second] += change;
+            s.cnt[piece.first][piece.second] = (s.cnt[piece.first][piece.second] + change + mod) % mod;
             return;
         }
         if (ind < l || r < ind)
