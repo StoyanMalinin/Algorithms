@@ -43,6 +43,11 @@ struct MaxFlowGraph
 
         graph[u].push_back(edges.size()-2);
         graph[v].push_back(edges.size()-1);
+
+        if (edges.size() % 1000 == 0)
+        {
+            cout << edges.size() << '\n';
+        }
     }
 
     void BFS(int x)
@@ -205,15 +210,15 @@ struct DAG
         }
         for(int u = 0; u < n; u++)
         {
-            cout << "start: " << u  << '\n';
+            cout << "start: " << u << " // " << n << '\n';
             vector <bool> used(n, false);
             dfs(u, u, G, x, y, used);
         }
-        cout << "END_BUILDING" << '\n';
+        //cout << "END_BUILDING" << '\n';
 
-        cout << "START_ALG" << '\n';
+        //cout << "START_ALG" << '\n';
         int res = G->Dinic(x[0], y[0]);
-        cout << "END_ALG" << '\n';
+        //cout << "END_ALG" << '\n';
         delete G;
 
         return n - res;
@@ -241,7 +246,7 @@ struct DAG
         {
             if (topSortId[u] == -1)
             {
-                cout << "start: " << u << '\n';
+                //cout << "start: " << u << '\n';
                 dfsTopSort(u, topSort, topSortId);
             }
         }
