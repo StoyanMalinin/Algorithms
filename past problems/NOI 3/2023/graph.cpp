@@ -70,7 +70,7 @@ bool checkCycle3()
 }
 
 //O(n^2 * sqrt(n) / 32), provided that m <= n * sqrt(n)
-//works, provided that there is no cycle of length 3 or 5
+//works, provided that there is no cycle of length 3 or 4
 bool checkCycle5()
 {
     for (int x = 1; x <= n; x++)
